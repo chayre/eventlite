@@ -1,0 +1,23 @@
+
+<article class="media box">
+<div id="<%= dom_id event %>">
+  <div class="media-content"></div>
+  <p>
+    <% if @event.attendees.any? %>
+        <% @event.attendees.each do |attendee| %>
+            <span class="attendee">
+                <%= attendee.username %>
+            </span> <br/>
+        <% end %>
+    <% else %>
+        No attendees
+    <% end %><br/>
+  </p>
+  <% if user_signed_in? && current_user.attending?(@event) %> 
+	  <%= render 'cancel' %>
+  <% else %>
+	  <%= render 'attend' unless current_user.host?(@event) %>
+  <% end %>
+</div>
+</article>
+
