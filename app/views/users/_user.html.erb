@@ -1,0 +1,25 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= user.email %>
+  </p>
+
+	<% if @user.events.any? %>
+		<h3>Submitted (<%= @user.events.count %>) events</h3>
+    <div id="events">
+      <% @user.events.all.each do |event| %>
+        <%= render event %>
+        <p>
+          <%= link_to "Show this event", event %>
+        </p>
+      <% end %>
+    </div>
+	<% else %>
+		<h3>No Events Found</h3>
+	<% end %>
+</div>
