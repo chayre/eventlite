@@ -5,9 +5,28 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # The User has_many events they can be the creator for; they are referenced by a creator_id
   has_many :events, :foreign_key => :creator_id
-  # The User has_many attended_events; through the event_attendees list
-  has_many :attended_events,  :through => :event_attendees
   # The User has_many event_attendees tables; in which they are referenced by the attendee_id
   has_many :event_attendees,  :foreign_key => :attendee_id
+  # The User has_many attended_events; through the event_attendees list
+  has_many :attended_events,  :through => :event_attendees
 
+  # Return true if user is attending event
+  def attending?(event)
+	  event.attendees.include?(self)
+	end
+
+  # Create an entry in the event_attendees table for which the attended_event is the given event_id
+  def attend!(event)
+    self.event_attendees.create!(attended_event_id: event.id)
+  end
+
+  # Select the attended_event_id which matches the given event_id and destroy it with a method in event_attendees_controller
+  def cancel!(event)
+		self.event_attendees.find_by(attended_event_id: event.id).destroy
+	end
+
+  # Compares the creator_id of the event with the user's id; return true if they're the same (user is host)
+  def host?(event)
+    event.creator_id == self.id
+  end
 end
