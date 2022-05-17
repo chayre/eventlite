@@ -6,7 +6,9 @@
     <div class="columns">
       <div id="events">
 <%= render @event %>
-<p class="show">
+<%= render 'attendees', event: @event %>
+
+<p class="back">
   <%= link_to "Back to events", events_path %> 
   <% if user_signed_in? %>
   <% if current_user.id == @event.creator.id %> 
