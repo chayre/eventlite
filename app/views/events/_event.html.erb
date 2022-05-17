@@ -1,32 +1,28 @@
+
+<article class="media box">
 <div id="<%= dom_id event %>">
+  <div class="media-content"></div>
   <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
-  <p>
-    <strong>Day:</strong>
-    <%= event.day %>
-  </p>
-
-  <p>
-    <strong>Month:</strong>
-    <%= event.month %>
-  </p>
-
-  <p>
-    <strong>Year:</strong>
-    <%= event.year %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
+    <strong>Title:  </strong>
     <%= event.title %>
-  </p>
-
+  </p>  
   <p>
     <strong>Description:</strong>
     <%= event.description %>
   </p>
 
+  <p>
+    <strong>Host:</strong>
+    <%= event.creator.username %>
+  </p>
+  <p>
+    <strong>Location:</strong>
+    <%= event.location %>
+  </p>
+  <p>
+    <strong>Date:</strong>
+  <%= event.month %>/<%= event.day %>/<%= event.year %>
+  </p>
 </div>
+</article>
+
