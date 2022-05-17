@@ -13,4 +13,28 @@
  *= require_tree .
  *= require_self
  */
-@import 'bulma'
+@import 'bulma';
+
+// round images
+.image {
+	border-radius: 50%;
+	img {
+		border-radius: 50%;
+	}
+}
+
+.notification:not(:last-child) {
+	margin-bottom: 0;
+}
+
+// margin to the right and bottom of checkbox
+.boolean {  
+	margin-right: 10px;
+	margin-bottom: 5px;
+  }
+
+// get rid of default simple form ".." underneath required fields' "*"
+form abbr[title] {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
