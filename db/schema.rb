@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_16_235914) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_17_012450) do
+  create_table "creators_events", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "creator_id", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "location"
     t.integer "day"
@@ -20,6 +25,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_235914) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.index ["event_id"], name: "index_events_users_on_event_id"
+    t.index ["user_id"], name: "index_events_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
