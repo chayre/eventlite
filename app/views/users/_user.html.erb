@@ -14,7 +14,7 @@
     <div id="events">
       <% @user.events.all.each do |event| %>
         <%= render event %>
-        <p>
+        <p class="show">
           <%= link_to "Show this event", event %>
         </p>
       <% end %>
