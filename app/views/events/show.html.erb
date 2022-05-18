@@ -1,26 +1,40 @@
 <p style="color: green"><%= notice %></p>
-<div class="column is-half"></div>
-
 <section class="section">
   <div class="container">
-    <div class="columns">
-      <div id="events">
-<%= render @event %>
-<%= render 'attendees', event: @event %>
+    <div class="columns is-mobile is-centered">
+      
+      <div class="column is-one-third">
+        <p>
+          <strong>Event Info</strong>
+        </p>
+        <%= render @event %>
 
-<p class="back">
-  <%= link_to "Back to events", events_path %> 
-  <% if user_signed_in? %>
-  <% if current_user.id == @event.creator.id %> 
-  | <%= link_to "Edit this event", edit_event_path(@event) %> 
-</p>
-<div class="destroy">
-  <%= button_to "Destroy this event", @event, method: :delete %>
-  <% end %>
-  <% end %>
-</div>
-</div>
-</div>
-</div>
-</div>
+        <p class="back">
+          <%= link_to "Back to events", events_path %> 
+          <% if user_signed_in? %>
+            <% if current_user.id == @event.creator.id %> 
+          |   <%= link_to "Edit this event", edit_event_path(@event) %> 
+            <% end %>
+          <% end %>
+        </p>
+
+        <div class="destroy">
+          <% if user_signed_in? %>
+            <% if current_user.id == @event.creator.id %> 
+              <%= button_to "Delete this event", @event, method: :delete, class: "button is-info" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <p>
+          <strong>Attendees</strong>
+        </p>
+        <%= render 'attendees', event: @event %>
+      </div>
+        
+      
+    </div>
+  </div>
 </section>
