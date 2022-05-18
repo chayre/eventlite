@@ -6,11 +6,11 @@
         
         <div class="column is-one-third">
           <article class="media box">
-            <div class="media-content">
+            <span class="media-content">
               <% if user_signed_in? %>  
                 <%= render 'userinfo', user: @user %>
               <% end %>
-            </div>
+            </span>
           </article>
         </div>
 
@@ -18,7 +18,7 @@
         <div class="column is-one-third">
             <% if @user.events.future.any? %>
               <p>
-                <strong>Upcoming events you're hosting</strong>
+                <strong>Upcoming hosted events</strong>
               </p>
               <% @user.events.future.all.each do |event| %>
                 <%= render event %>
@@ -27,14 +27,14 @@
                 </p>
               <% end %>
               <% else %>
-                <h3>No Upcoming events; sign up for one!</h3>
+              <strong>No Upcoming events; sign up for one!</strong><br>
             <% end %>
 
         
             <% if @user.events.past.any? %>
             <br>
                 <p>
-                  <strong>Past events you hosted</strong>
+                  <strong>Past hosted events</strong>
                 </p>
                 <% @user.events.past.all.each do |event| %>
                   <%= render event %>
@@ -43,24 +43,21 @@
                   </p>
                 <% end %>
             <% end %>
-
-
-
           </div>
 
           <div class="column is-one-third">
+            <% if @user.attended_events.future.any? %>
             <p>
-              <strong>Upcoming events you're attending</strong>
-            </p>
-            <% if @user.attended_events.any? %>
-            <% @user.attended_events.all.each do |event| %>
+                <strong>Events you're signed up for</strong>
+              </p>
+            <% @user.attended_events.future.all.each do |event| %>
               <%= render event %>
               <p class="show">
                 <%= link_to "Show this event", event %>
               </p>
             <% end %>
             <% else %>
-          <h3>Not attending any events</h3>
+            <strong>Not signed up to attend any events; don't be shy, go find one!<strong>
           <% end %>
           </div>
         <div>
