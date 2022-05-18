@@ -22,4 +22,10 @@
   <% else %>
     <strong>Submitted <%= 0 %> events</strong>
   <% end %>
-</p>
+</p><br>
+
+<% if user_signed_in? %>
+    <p class="control">
+        <%= link_to "Change your password" , edit_user_registration_path, class: "button is-info" %>
+    </p>
+<% end %>
