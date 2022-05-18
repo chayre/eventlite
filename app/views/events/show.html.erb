@@ -12,7 +12,7 @@
         <p class="back">
           <%= link_to "Back to events", events_path %> 
           <% if user_signed_in? %>
-            <% if current_user.id == @event.creator.id %> 
+            <% if current_user.id == @event.creator.id || current_user.admin %> 
           |   <%= link_to "Edit this event", edit_event_path(@event) %> 
             <% end %>
           <% end %>
@@ -20,7 +20,7 @@
 
         <div class="destroy">
           <% if user_signed_in? %>
-            <% if current_user.id == @event.creator.id %> 
+            <% if current_user.id == @event.creator.id || current_user.admin %> 
               <%= button_to "Delete this event", @event, method: :delete, class: "button is-info" %>
             <% end %>
           <% end %>
