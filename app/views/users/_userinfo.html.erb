@@ -1,0 +1,25 @@
+<p>
+  <strong>Name:</strong>
+  <%= user.name %>
+</p>
+<br>
+
+<p>
+  <strong>Username:</strong>
+  <%= user.username %>
+</p>
+<br>
+
+<p>
+  <strong>Email:</strong>
+  <%= user.email %>
+</p>
+<br>
+
+<p>
+  <% if @user.events.any? %>
+    <strong>Submitted <%= @user.events.count %> events</strong>
+  <% else %>
+    <strong>Submitted <%= 0 %> events</strong>
+  <% end %>
+</p>
