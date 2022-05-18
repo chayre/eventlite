@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-half">
+          <article class="media box">
+            <span class="media-content">
+              <% if user_signed_in? %>  
+                <%= render 'userinfo', user: @user %>
+              <% end %>
+            </span>
+          </article>
+        </div>
+    </div>
+  </div>
+</section>
