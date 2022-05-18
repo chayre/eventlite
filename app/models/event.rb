@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  location    :string
+#  description :text
+#  title       :string
+#  date        :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  creator_id  :integer
+#
+# Indexes
+#
+#  index_events_on_creator_id  (creator_id)
+#
 class Event < ApplicationRecord
     #has_many :post_authorings, foreign_key: :authored_post_id
     #has_many :authors, through: :post_authorings, source: :post_author
