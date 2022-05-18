@@ -17,7 +17,9 @@
     <% if user_signed_in? && current_user.attending?(@event) %> 
 	    <%= render 'cancel' %>
     <% else %>
-	    <%= render 'attend' unless current_user.host?(@event) %>
+      <% if user_signed_in? %>
+	      <%= render 'attend' unless current_user.host?(@event) %>
+          <% end %>
     <% end %>
     </div>
   </div>
