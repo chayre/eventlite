@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # The User has_many event_attendees tables; in which they are referenced by the attendee_id
   has_many :event_attendees,  :foreign_key => :attendee_id
   # The User has_many attended_events; through the event_attendees list
-  has_many :attended_events,  :through => :event_attendees
+  has_many :attended_events,  :through => :event_attendees, dependent: :delete_all
 
   # Return true if user is attending event
   def attending?(event)
@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def host?(event)
     event.creator_id == self.id
   end
+
+  validates :name, presence: true, length: { maximum: 25 }
+  validates :username, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 25 }
 end
