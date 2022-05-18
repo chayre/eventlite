@@ -2,15 +2,21 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns">
-   <div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p class="show">
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
-</div>
-</div>
-</div>
+    <div class="columns is-mobile is-centered">
+       
+      <div class="column is-half">
+        <p>
+          <strong>All Events</strong>
+        </p>
+        <% @events.each do |event| %>
+          <%= render 'shortevent', event: event %>
+            <p class="show">
+              <%= link_to "Show this event", event %>
+            </p>
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>
 </section>
