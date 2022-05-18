@@ -10,7 +10,7 @@
             </span> <br/>
         <% end %>
     <% else %>
-        No attendees
+    <strong>No attendees</strong><br/>
     <% end %><br/>
   </p>
   <% if user_signed_in? && current_user.attending?(@event) %> 
