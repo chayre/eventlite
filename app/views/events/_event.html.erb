@@ -12,7 +12,7 @@
 
   <p>
     <strong>Host:</strong>
-    <%= event.creator.username %>
+    <%= link_to event.creator.username, user_path(event.creator.id)  %>
   </p>
   <p>
     <strong>Location:</strong>
