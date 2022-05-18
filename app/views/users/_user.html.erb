@@ -1,25 +1,50 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
+<section class="section">
+  <div class="container">
+    <div class="columns">
 
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
+  <div class="column is-one-third">
+    <article class="media box">
+      <div class="media-content">
+        <% if user_signed_in? %>  
+          <%= render 'userinfo', user: @user %>
+        <% end %>
+      </div>
+    </article>
+  </div>
 
-	<% if @user.events.any? %>
-		<h3>Submitted (<%= @user.events.count %>) events</h3>
-    <div id="events">
+  <div class="column is-one-third">
+    <p>
+      <strong> Upcoming events you're hosting</strong>
+    </p>
+      <% if @user.events.any? %>
       <% @user.events.all.each do |event| %>
         <%= render event %>
         <p class="show">
           <%= link_to "Show this event", event %>
         </p>
       <% end %>
-    </div>
-	<% else %>
+      <% else %>
 		<h3>No Events Found</h3>
 	<% end %>
-</div>
+  </div>
+
+  <div class="column is-one-third">
+    <p>
+      <strong>Upcoming events you're attending</strong>
+    </p>
+    <% if @user.attended_events.any? %>
+    <% @user.attended_events.all.each do |event| %>
+      <%= render event %>
+      <p class="show">
+        <%= link_to "Show this event", event %>
+      </p>
+    <% end %>
+    <% else %>
+  <h3>Not attending any events</h3>
+  <% end %>
+  </div>
+<div>
+
+    </div>
+  </div>
+</section>
