@@ -21,7 +21,7 @@
                 <strong>Upcoming hosted events</strong>
               </p>
               <% @user.events.future.all.each do |event| %>
-                <%= render event %>
+              <%= render 'events/shortevent', event: event %>
                 <p class="show">
                   <%= link_to "Show this event", event %>
                 </p>
@@ -37,7 +37,7 @@
                   <strong>Past hosted events</strong>
                 </p>
                 <% @user.events.past.all.each do |event| %>
-                  <%= render event %>
+                  <%= render 'events/shortevent', event: event %>
                   <p class="show">
                     <%= link_to "Show this event", event %>
                   </p>
@@ -51,7 +51,7 @@
                 <strong>Events you're signed up for</strong>
               </p>
             <% @user.attended_events.future.all.each do |event| %>
-              <%= render event %>
+              <%= render 'events/shortevent', event: event %>
               <p class="show">
                 <%= link_to "Show this event", event %>
               </p>
