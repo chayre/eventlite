@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'user/registrations' }
+  # Devise routes
+  devise_for :users, controllers: { 
+  passwords:          'users/passwords',
+  registrations:      'users/registrations',
+  sessions:           'users/sessions',
+  }
   resources :events
   resources :users, only: [:show, :edit]
   resources :event_attendees, only: [:create, :destroy]
