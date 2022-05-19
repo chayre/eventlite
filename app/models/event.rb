@@ -26,7 +26,9 @@ class Event < ApplicationRecord
     # The Event has many attendees through which it related in event_attendees table
     has_many :attendees, :through => :event_attendees, dependent: :delete_all
 
-scope :past, 	 -> { where("Date <  ?", Date.today).order('Date DESC') }
-scope :future, 	 -> { where("Date >  ?", Date.today).order('Date DESC') }
+    # Allows you to call event.past for a boolean return if the event is in the past
+    scope :past, 	 -> { where("Date <  ?", Date.today).order('Date DESC') }
+    # Allows you to call event.future for a boolean return if the event is in the future
+    scope :future, 	 -> { where("Date >  ?", Date.today).order('Date DESC') }
 
 end
