@@ -29,6 +29,6 @@ class Event < ApplicationRecord
     # Allows you to call event.past for a boolean return if the event is in the past
     scope :past, 	 -> { where("Date <  ?", Date.today).order('Date DESC') }
     # Allows you to call event.future for a boolean return if the event is in the future
-    scope :future, 	 -> { where("Date >  ?", Date.today).order('Date DESC') }
+    scope :future, 	 -> { where("Date >  ?", Date.today).order('Date ASC') }
 
 end

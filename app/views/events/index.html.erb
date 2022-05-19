@@ -8,7 +8,7 @@
         <p>
           <strong>All Events</strong>
         </p>
-        <% @events.each do |event| %>
+        <% @events.each.future do |event| %>
           <%= render 'shortevent', event: event %>
             <p class="show">
               <%= link_to "Show this event", event %>
