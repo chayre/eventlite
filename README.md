@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 
-https://lit-springs-90102.herokuapp.com/users/4
+https://lit-springs-90102.herokuapp.com
